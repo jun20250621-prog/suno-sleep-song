@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Thumbnail - Afternoon Tea</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #2d1810;
+            font-family: 'Microsoft JhengHei', 'Arial Black', sans-serif;
+        }
+
+        .thumbnail {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #f5deb3 0%, #d4a574 30%, #c4956a 60%, #8b5a2b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Coffee steam */
+        .steam {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .steam::before,
+        .steam::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            animation: steam 3s ease-out infinite;
+        }
+
+        .steam::before {
+            width: 30px;
+            height: 60px;
+            left: 20px;
+            animation-delay: 0s;
+        }
+
+        .steam::after {
+            width: 40px;
+            height: 80px;
+            left: 50px;
+            animation-delay: 1s;
+        }
+
+        @keyframes steam {
+            0% { transform: translateY(0) scale(1); opacity: 0.6; }
+            100% { transform: translateY(-100px) scale(2); opacity: 0; }
+        }
+
+        /* Coffee cup */
+        .cup {
+            position: absolute;
+            top: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 250px;
+        }
+
+        .cup-body {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 180px;
+            background: linear-gradient(135deg, #fff 0%, #f5f5f5 50%, #e8e8e8 100%);
+            border-radius: 0 0 100px 100px;
+            box-shadow: 
+                inset -10px -10px 30px rgba(0,0,0,0.1),
+                0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .cup-handle {
+            position: absolute;
+            top: 80px;
+            right: 30px;
+            width: 60px;
+            height: 80px;
+            border: 15px solid #fff;
+            border-radius: 0 50px 50px 0;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cup-saucer {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            height: 40px;
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Coffee surface */
+        .coffee {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 170px;
+            height: 30px;
+            background: #6f4e37;
+            border-radius: 50%;
+        }
+
+        /* Title */
+        .title {
+            position: absolute;
+            bottom: 150px;
+            left: 60px;
+            z-index: 10;
+        }
+
+        .title h1 {
+            font-size: 100px;
+            font-weight: 900;
+            color: #2d1810;
+            text-shadow: 
+                3px 3px 0 #fff,
+                -2px -2px 0 #fff,
+                2px -2px 0 #fff,
+                -2px 2px 0 #fff,
+                0 5px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .title .subtitle {
+            font-size: 32px;
+            font-weight: bold;
+            color: #8b4513;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            letter-spacing: 6px;
+            margin-top: 10px;
+        }
+
+        /* Music note */
+        .note {
+            position: absolute;
+            font-size: 60px;
+            animation: float 3s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        .note-1 {
+            top: 100px;
+            left: 150px;
+            animation-delay: 0s;
+        }
+
+        .note-2 {
+            top: 150px;
+            right: 200px;
+            animation-delay: 1s;
+        }
+
+        .note-3 {
+            top: 80px;
+            right: 120px;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
+
+        /* Tags */
+        .tags {
+            position: absolute;
+            bottom: 50px;
+            left: 60px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #8b4513 0%, #5d3a1a 100%);
+            padding: 12px 28px;
+            border-radius: 30px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.5);
+        }
+
+        .tag.white {
+            background: white;
+            color: #2d1810;
+        }
+
+        /* AI badge */
+        .ai-badge {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            padding: 15px 35px;
+            border-radius: 30px;
+            color: white;
+            font-size: 24px;
+            font-weight: 900;
+            box-shadow: 0 6px 25px rgba(0, 210, 255, 0.5);
+        }
+
+        /* Sun rays */
+        .rays {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 200, 100, 0.4) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail">
+        <div class="rays"></div>
+        
+        <div class="note note-1">🎵</div>
+        <div class="note note-2">☕</div>
+        <div class="note note-3">🎷</div>
+        
+        <div class="cup">
+            <div class="cup-handle"></div>
+            <div class="cup-body">
+                <div class="coffee"></div>
+            </div>
+            <div class="cup-saucer"></div>
+        </div>
+        
+        <div class="title">
+            <h1>下午茶</h1>
+            <div class="subtitle">AFTERNOON · JAZZ</div>
+        </div>
+        
+        <div class="tags">
+            <div class="tag white">☕ 咖啡廳</div>
+            <div class="tag">🎷 爵士</div>
+        </div>
+        
+        <div class="ai-badge">🤖 AI MUSIC</div>
+    </div>
+</body>
+</html>
