@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Thumbnail - Afternoon Tea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a2e;
+        }
+
+        .thumbnail {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            background: #1e1410;
+        }
+
+        /* Background - warm coffee shop ambiance (no hands) */
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(135deg, rgba(30, 20, 16, 0.75) 0%, rgba(15, 10, 8, 0.6) 50%, rgba(10, 5, 3, 0.85) 100%),
+                url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=1280&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Warm glow effect */
+        .glow {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70%;
+            height: 100%;
+            background: radial-gradient(ellipse at 80% 50%, rgba(255, 180, 100, 0.12) 0%, transparent 60%);
+        }
+
+        /* Coffee beans image - left side (no hands) */
+        .beans {
+            position: absolute;
+            bottom: -100px;
+            left: -80px;
+            width: 600px;
+            height: 600px;
+            background: 
+                url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+        }
+
+        /* Saxophone image - right (no hands) */
+        .sax {
+            position: absolute;
+            top: 60px;
+            right: 50px;
+            width: 220px;
+            height: 280px;
+            background: 
+                url('https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=220&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transform: rotate(-3deg);
+        }
+
+        /* Minimal icons */
+        .icon {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.6;
+        }
+        .ic-1 { top: 100px; left: 360px; }
+        .ic-2 { top: 280px; right: 290px; }
+
+        /* Title - elegant */
+        .title {
+            position: absolute;
+            top: 50%;
+            left: 52%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .title h1 {
+            font-family: 'Playfair Display', 'Noto Serif TC', serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 8px;
+            text-shadow: 0 8px 30px rgba(0,0,0,0.6);
+            line-height: 1.1;
+        }
+
+        .title .h1-2 {
+            display: block;
+            margin-top: 8px;
+            font-size: 58px;
+            font-weight: 400;
+            letter-spacing: 20px;
+            color: #e8d5b7;
+        }
+
+        .title .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 16px;
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Tags */
+        .tags {
+            position: absolute;
+            bottom: 45px;
+            left: 55px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .tag {
+            font-family: 'Noto Serif TC', serif;
+            background: rgba(255,255,255,0.92);
+            padding: 10px 24px;
+            border-radius: 4px;
+            color: #1e1410;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        }
+
+        .tag.dark {
+            background: rgba(30,20,16,0.85);
+            color: #e8d5b7;
+        }
+
+        /* AI badge */
+        .ai-badge {
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            font-family: 'Noto Serif TC', serif;
+            background: rgba(30,20,16,0.8);
+            padding: 10px 20px;
+            border-radius: 4px;
+            color: rgba(255,255,255,0.85);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Duration */
+        .duration {
+            position: absolute;
+            top: 35px;
+            right: 35px;
+            font-family: 'Noto Serif TC', serif;
+            background: rgba(0,0,0,0.7);
+            padding: 8px 14px;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* Play icon */
+        .play-icon {
+            position: absolute;
+            bottom: 160px;
+            right: 70px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+        }
+        .play-icon::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 18px;
+            border-color: transparent transparent transparent #fff;
+            margin-left: 4px;
+        }
+
+        /* Accent line */
+        .line-accent {
+            position: absolute;
+            bottom: 55px;
+            left: 55px;
+            width: 80px;
+            height: 2px;
+            background: #e8d5b7;
+        }
+
+        /* Right gradient */
+        .right-gradient {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(to right, transparent 30%, rgba(10,5,3,0.7) 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail">
+        <div class="bg-image"></div>
+        <div class="glow"></div>
+        <div class="right-gradient"></div>
+        
+        <!-- Coffee beans (no hands) -->
+        <div class="beans"></div>
+        
+        <!-- Saxophone (no hands) -->
+        <div class="sax"></div>
+        
+        <div class="icon ic-1">🎷</div>
+        <div class="icon ic-2">☕</div>
+        
+        <div class="title">
+            <h1>下午茶<span class="h1-2">時光</span></h1>
+            <div class="subtitle">Jazz · Cafe · Relax</div>
+        </div>
+        
+        <div class="line-accent"></div>
+        <div class="tags">
+            <div class="tag">CAFÉ</div>
+            <div class="tag dark">JAZZ</div>
+        </div>
+        
+        <div class="ai-badge">AI MUSIC</div>
+        <div class="duration">▶ 3:42</div>
+        
+        <div class="play-icon"></div>
+    </div>
+</body>
+</html>
