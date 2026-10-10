@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夜枕星辰 - YouTube Thumbnail</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #0a0a1a;
+            font-family: 'Microsoft JhengHei', sans-serif;
+        }
+
+        .thumbnail {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Stars background */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, white, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, white, transparent),
+                radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(1px 1px at 230px 80px, white, transparent),
+                radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 400px 60px, white, transparent),
+                radial-gradient(2px 2px at 500px 200px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 600px 100px, white, transparent),
+                radial-gradient(2px 2px at 700px 180px, white, transparent),
+                radial-gradient(1px 1px at 800px 50px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(2px 2px at 900px 140px, white, transparent),
+                radial-gradient(1px 1px at 1000px 90px, white, transparent),
+                radial-gradient(2px 2px at 1100px 170px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 1200px 60px, white, transparent);
+            background-size: 1280px 720px;
+            animation: twinkle 4s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        /* Moon */
+        .moon {
+            position: absolute;
+            top: 80px;
+            right: 150px;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, #fff9e6 0%, #ffe066 50%, #ffcc00 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 60px rgba(255, 220, 100, 0.6), 0 0 100px rgba(255, 220, 100, 0.3);
+        }
+
+        /* Glow effect behind moon */
+        .moon::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle, rgba(255, 220, 100, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        /* Main title */
+        .title {
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            z-index: 10;
+            text-align: center;
+            letter-spacing: 8px;
+        }
+
+        .title span {
+            display: block;
+            font-size: 36px;
+            font-weight: normal;
+            margin-top: 15px;
+            opacity: 0.9;
+            letter-spacing: 12px;
+        }
+
+        /* Moon icon */
+        .moon-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            z-index: 10;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 30px;
+            color: white;
+            font-size: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* AI badge */
+        .ai-badge {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Bottom wave decoration */
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, rgba(15, 12, 41, 0.8), transparent);
+        }
+
+        /* Sleep icon */
+        .sleep-icon {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            font-size: 40px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail">
+        <div class="stars"></div>
+        <div class="moon"></div>
+        
+        <div class="moon-icon">🌙</div>
+        <div class="title">
+            夜枕星辰
+            <span>SLEEP & MEDITATION</span>
+        </div>
+        
+        <div class="tags">
+            <div class="tag">🎵 AI 音樂</div>
+            <div class="tag">😴 睡眠</div>
+            <div class="tag">🧘 靜心</div>
+        </div>
+        
+        <div class="sleep-icon">💤</div>
+        <div class="ai-badge">🤖 AI GENERATED</div>
+        <div class="wave"></div>
+    </div>
+</body>
+</html>
