@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Thumbnail - 月下清梦</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0d1520 100%);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Noto Serif TC', 'Playfair Display', serif;
+        }
+        
+        /* Moon glow effect */
+        .moon {
+            position: absolute;
+            top: 80px;
+            right: 120px;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at 30% 30%, #fffde7 0%, #ffecb3 40%, #ffd54f 100%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 60px rgba(255, 213, 79, 0.6),
+                0 0 120px rgba(255, 213, 79, 0.4),
+                0 0 200px rgba(255, 213, 79, 0.2);
+            animation: moonGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes moonGlow {
+            0%, 100% { box-shadow: 0 0 60px rgba(255, 213, 79, 0.6), 0 0 120px rgba(255, 213, 79, 0.4); }
+            50% { box-shadow: 0 0 80px rgba(255, 213, 79, 0.8), 0 0 160px rgba(255, 213, 79, 0.5); }
+        }
+        
+        /* Mountain silhouettes */
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 320px;
+        }
+        
+        .mountain-1 {
+            background: linear-gradient(180deg, transparent 0%, #0a1525 30%, #0d1a2d 100%);
+            clip-path: polygon(0 100%, 0 60%, 15% 45%, 30% 55%, 45% 35%, 60% 50%, 75% 40%, 90% 55%, 100% 45%, 100% 100%);
+        }
+        
+        .mountain-2 {
+            background: linear-gradient(180deg, transparent 0%, #0d1520 50%, #0f1a28 100%);
+            clip-path: polygon(0 100%, 0 70%, 10% 55%, 25% 65%, 40% 50%, 55% 60%, 70% 45%, 85% 60%, 100% 50%, 100% 100%);
+            margin-top: -80px;
+        }
+        
+        /* Pine trees */
+        .trees {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+        }
+        
+        .tree {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 60px solid #0a1520;
+        }
+        
+        .tree:nth-child(1) { left: 50px; border-bottom-width: 80px; }
+        .tree:nth-child(2) { left: 100px; border-bottom-width: 50px; }
+        .tree:nth-child(3) { left: 150px; border-bottom-width: 70px; }
+        .tree:nth-child(4) { right: 200px; border-bottom-width: 60px; }
+        .tree:nth-child(5) { right: 280px; border-bottom-width: 45px; }
+        
+        /* Stars */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+        }
+        
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+        
+        .star:nth-child(1) { top: 50px; left: 200px; animation-delay: 0s; }
+        .star:nth-child(2) { top: 100px; left: 350px; animation-delay: 0.5s; }
+        .star:nth-child(3) { top: 80px; left: 500px; animation-delay: 1s; }
+        .star:nth-child(4) { top: 150px; left: 150px; animation-delay: 1.5s; }
+        .star:nth-child(5) { top: 120px; left: 700px; animation-delay: 0.3s; }
+        .star:nth-child(6) { top: 60px; left: 850px; animation-delay: 0.8s; }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        /* Mist/fog */
+        .mist {
+            position: absolute;
+            bottom: 100px;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(180deg, transparent 0%, rgba(200, 210, 230, 0.1) 50%, rgba(200, 210, 230, 0.2) 100%);
+            animation: mistMove 8s ease-in-out infinite;
+        }
+        
+        @keyframes mistMove {
+            0%, 100% { transform: translateX(-20px); opacity: 0.5; }
+            50% { transform: translateX(20px); opacity: 0.8; }
+        }
+        
+        /* Title */
+        .title-container {
+            position: absolute;
+            bottom: 120px;
+            left: 60px;
+            z-index: 10;
+        }
+        
+        .title-chinese {
+            font-size: 72px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 
+                0 0 20px rgba(255, 213, 79, 0.5),
+                0 4px 8px rgba(0, 0, 0, 0.5);
+            letter-spacing: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .title-english {
+            font-size: 28px;
+            font-weight: 400;
+            color: #b8c4d4;
+            letter-spacing: 4px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Category tags */
+        .tags {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .tag {
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 213, 79, 0.3);
+            border-radius: 4px;
+            font-size: 14px;
+            color: #ffd54f;
+            letter-spacing: 2px;
+        }
+        
+        /* Duration */
+        .duration {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 4px;
+            font-size: 16px;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        /* Chinese pattern decoration */
+        .pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(255, 213, 79, 0.03) 100px, rgba(255, 213, 79, 0.03) 101px),
+                repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(255, 213, 79, 0.03) 100px, rgba(255, 213, 79, 0.03) 101px);
+            pointer-events: none;
+        }
+        
+        /* Lanterns */
+        .lantern {
+            position: absolute;
+            width: 30px;
+            height: 45px;
+            background: linear-gradient(180deg, #c62828 0%, #d32f2f 50%, #b71c1c 100%);
+            border-radius: 50% 50% 45% 45%;
+            top: 150px;
+        }
+        
+        .lantern::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: #8d6e63;
+        }
+        
+        .lantern::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(180deg, #ffeb3b 0%, #ffc107 100%);
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
+            animation: lanternGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes lanternGlow {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        
+        .lantern:nth-child(1) { left: 80px; }
+        .lantern:nth-child(2) { left: 180px; }
+    </style>
+</head>
+<body>
+    <div class="pattern"></div>
+    
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    
+    <div class="moon"></div>
+    
+    <div class="lantern"></div>
+    <div class="lantern"></div>
+    
+    <div class="mountain mountain-1"></div>
+    <div class="mountain mountain-2"></div>
+    
+    <div class="trees">
+        <div class="tree"></div>
+        <div class="tree"></div>
+        <div class="tree"></div>
+        <div class="tree"></div>
+        <div class="tree"></div>
+    </div>
+    
+    <div class="mist"></div>
+    
+    <div class="tags">
+        <div class="tag">中樂</div>
+        <div class="tag">冥想</div>
+        <div class="tag">睡眠</div>
+    </div>
+    
+    <div class="title-container">
+        <div class="title-chinese">月下清夢</div>
+        <div class="title-english">MOONLIT SERENITY</div>
+    </div>
+    
+    <div class="duration">1:00:00</div>
+</body>
+</html>
